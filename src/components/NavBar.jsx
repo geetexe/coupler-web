@@ -24,7 +24,10 @@ const NavBar = () => {
   return <>
       <div className="navbar bg-base-300 shadow-sm">
       <div className="flex-1">
-        <Link to="/" className="btn btn-ghost text-xl">Coupler</Link>
+        <Link to="/" className="btn btn-ghost text-xl">
+        <img src="https://www.vectorkhazana.com/assets/images/products/Love_Heart.png" className="h-full" alt="Coupler" />
+          Coupler
+        </Link>
       </div>
       {
         user &&
@@ -42,7 +45,7 @@ const NavBar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-[90%] w-52 p-2 shadow">
               <li>
                 <Link className="justify-between" to="/profile">
                   Profile
