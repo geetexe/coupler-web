@@ -4,23 +4,24 @@ import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
 import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "../utils/constants";
+import { toggleLoading } from "../utils/loaderSlice";
 
 const Login = () => {
     const navigate = useNavigate();
     const [email, setEmailId] = useState('geet@coupler.com');
     const [password, setPassword] = useState('geet123');
-    const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const dispatch = useDispatch();
 
     const handleLogin = async () => {
+        dispatch(toggleLoading(true));
         try{
-            setLoading(true);
             const res = await axios.post(`${BASE_URL}/login`, { email, password }, { withCredentials: true });
             dispatch(addUser(res?.data?.user));
+            dispatch(toggleLoading(false));
             return navigate("/");
         } catch(error){
-            setLoading(false);
+            dispatch(toggleLoading(false));
             setError(error?.response?.data || error?.message);
         }
     }
@@ -50,7 +51,7 @@ const Login = () => {
                 </div>
                 {error && <div className="text-red-500">{error}</div>}
                 <div className="card-actions justify-center">
-                    <button className="btn btn-primary" onClick={handleLogin} disabled={loading}>
+                    <button className="btn btn-primary" onClick={handleLogin}>
                         Login
                     </button>
                 </div>
