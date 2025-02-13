@@ -32,14 +32,14 @@ const Feed = () => {
     }, []);
 
     if(!feed?.length){
-        return <div className="h-[80vh] flex items-center justify-center text-center">
+        return <div className="h-full flex items-center justify-center text-center">
             Oops! It seems like no users are available right now.<br />
             Please check after sometime.
         </div>
     }
 
     return feed && (<>
-        <div className="flex h-[80vh] justify-center items-center h-screen">
+        <div className="flex h-full justify-center items-center">
             <UserCard user={feed[0]} fetchFeed={fetchFeed} />
         </div>
     </>)

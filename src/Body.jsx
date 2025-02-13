@@ -31,7 +31,7 @@ const Body = () => {
   return (<>
     {isLoading && <Loader />}
     <NavBar />
-    <div className='mb-40'>
+    <div className='h-[calc(100vh_-_64px_-_68px)]'>
       <Outlet />
     </div>
     <Footer />

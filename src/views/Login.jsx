@@ -50,7 +50,7 @@ const Login = () => {
         }
     }
 
-    return <div className="flex justify-center items-center mt-5">
+    return <div className="flex justify-center items-center h-full">
         <div className="card bg-base-200 w-96 shadow-sm">
             <div className="card-body">
                 <h2 className="card-title">Sign {isSignUpFlow ? 'Up' : 'In'} to Coupler!</h2>
@@ -130,8 +130,8 @@ const Login = () => {
                 <div className="mt-5">
                     {
                         isSignUpFlow 
-                            ? <div className="text-center">Existing User? <span onClick={() => setIsSignUpFlow(false)}>Sign In</span></div>
-                            : <div className="text-center">New User? <span onClick={() => setIsSignUpFlow(true)}>Sign Up</span></div>
+                            ? <div className="text-center">Existing User? <span className="cursor-pointer text-primary" onClick={() => setIsSignUpFlow(false)}>Sign In</span></div>
+                            : <div className="text-center">New User? <span className="cursor-pointer text-primary" onClick={() => setIsSignUpFlow(true)}>Sign Up</span></div>
                     }
                 </div>
             </div>

@@ -3,7 +3,6 @@ import { BASE_URL } from "../utils/constants";
 import { useDispatch } from "react-redux";
 import { toggleLoading } from "../utils/loaderSlice";
 
-const PLACEHOLDER_URL = 'https://whitedotpublishers.com/wp-content/uploads/2022/05/male-placeholder-image.jpeg';
 const UserCard = ({user, fetchFeed}) => {
     const dispatch = useDispatch();
     const {firstName, lastName, about, gender, age, skills, photoUrl, isDummy, _id:toUserId} = user || {};
@@ -21,12 +20,12 @@ const UserCard = ({user, fetchFeed}) => {
         }
     }
     return <>
-        <div className="card card-xl bg-base-300 w-96 my-4 shadow-sm">
-            <figure className="px-10 pt-10 cursor-zoom-in" onClick={() => document.getElementById(toUserId).showModal()}>
+        <div className="card card-xl bg-base-300 w-96 shadow-sm">
+            <figure className="px-10 pt-10 h-[450px]">
                 <img
                 src={photoUrl}
                 alt={firstName}
-                className="rounded-xl" />
+                className="rounded-xl cursor-zoom-in h-full w-auto object-cover" onClick={() => document.getElementById(toUserId).showModal()} />
             </figure>
             <div className="card-body">
                 <h2 className="card-title">{firstName} {lastName}, {age}</h2>
