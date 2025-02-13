@@ -31,12 +31,14 @@ const Connections = () => {
     if(!connections) return;
 
     if(!connections.length){
-        return <p>No connections found!</p>;
+        return <div className="h-[80vh] flex items-center justify-center text-center">
+            No Connections Found!
+        </div>
     }
     
     return connections && <>
         <h1 className="m-5 text-4xl">Connections ({connections?.length})</h1>
-        <div className="flex justify-around">
+        <div className="flex justify-around flex-wrap">
             {
                 connections.map(connection => {
                     return <UserCard user={{...connection, isDummy: true}} key={connection._id} />

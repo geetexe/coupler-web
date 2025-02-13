@@ -3,6 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { BASE_URL } from "../utils/constants";
 import { removeUser } from "../utils/userSlice";
+import { toggleLoading } from "../utils/loaderSlice";
+import { removeConnections } from "../utils/connectionsSlice";
+import { removeFeed } from "../utils/feedSlice";
 
 const NavBar = () => {
 
@@ -11,12 +14,17 @@ const NavBar = () => {
   const user = useSelector(store => store.user);
 
   const handleLogout = async () => {
+    dispatch(toggleLoading(true));
     try{
       await axios.post(`${BASE_URL}/logout`, {}, { withCredentials:true });
+      dispatch(removeConnections());
       dispatch(removeUser());
+      dispatch(toggleLoading(false));
+      dispatch(removeFeed());
       navigate("/login");
     }
     catch(err){
+      dispatch(toggleLoading(false));
       console.error(err);
     }
   }
@@ -39,7 +47,7 @@ const NavBar = () => {
             <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
               <div className="w-10 rounded-full">
                 <img
-                  alt="Tailwind CSS Navbar component"
+                  alt={user.firstName}
                   src={user?.photoUrl} />
               </div>
             </div>
@@ -53,6 +61,7 @@ const NavBar = () => {
                 </Link>
               </li>
               <li><Link to="/connections">Connections</Link></li>
+              <li><Link to="/requests">Requests</Link></li>
               <li><a onClick={handleLogout}>Logout</a></li>
             </ul>
           </div>

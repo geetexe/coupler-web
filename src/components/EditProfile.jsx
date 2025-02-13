@@ -46,7 +46,7 @@ const EditProfile = ({user}) => {
                 <span>{notification}</span>
             </div>
         </div>}
-        <UserCard user={{firstName, lastName, gender, age, about, photoUrl, isDummy:true}} />
+        <UserCard user={{firstName, lastName, gender, age, about, photoUrl, isDummy:true, _id:user._id}} />
         <fieldset className="fieldset w-xs bg-base-200 border border-base-300 p-4 rounded-box">
             <legend className="fieldset-legend">Edit Profile</legend>
             
