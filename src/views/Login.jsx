@@ -50,8 +50,16 @@ const Login = () => {
         }
     }
 
+    const handleFormSubmission = () => {
+        isSignUpFlow ? handleSignup() : handleLogin();
+    }
+
     return <div className="flex justify-center items-center h-full">
-        <div className="card bg-base-200 w-96 shadow-sm">
+        <div className="card bg-base-200 w-96 shadow-sm" onKeyDown={e => {
+            if(e.key === 'Enter'){
+                handleFormSubmission();
+            }
+        }}>
             <div className="card-body">
                 <h2 className="card-title">Sign {isSignUpFlow ? 'Up' : 'In'} to Coupler!</h2>
                 <div className="py-4">
@@ -123,7 +131,7 @@ const Login = () => {
                 </div>
                 {error && <div className="text-red-500">{error}</div>}
                 <div className="card-actions justify-center">
-                    <button className="btn btn-primary" onClick={isSignUpFlow ? handleSignup : handleLogin}>
+                    <button className="btn btn-primary" onClick={handleFormSubmission}>
                         {isSignUpFlow ? 'Sign Up' : 'Login'}
                     </button>
                 </div>
