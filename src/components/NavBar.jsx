@@ -34,7 +34,7 @@ const NavBar = () => {
       <div className="flex-1">
         <Link to="/" className="btn btn-ghost text-xl">
         <img src="https://www.vectorkhazana.com/assets/images/products/Love_Heart.png" className="h-full" alt="Coupler" />
-          Coupler
+          Coupler{user?.isPremium ? <div className="badge badge-outline badge-warning text-[11px]">Premium</div> : <></>}
         </Link>
       </div>
       {

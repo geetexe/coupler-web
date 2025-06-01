@@ -9,6 +9,7 @@ import { toggleLoading } from "../utils/loaderSlice";
 const EditProfile = ({user}) => {
 
     const dispatch = useDispatch();
+    const {isPremium} = user || {};
 
     const [firstName, setFirstName] = useState(user.firstName);
     const [lastName, setLastName] = useState(user.lastName);
@@ -46,7 +47,7 @@ const EditProfile = ({user}) => {
                 <span>{notification}</span>
             </div>
         </div>}
-        <UserCard user={{firstName, lastName, gender, age, about, photoUrl, isDummy:true, _id:user._id}} />
+        <UserCard user={{firstName, lastName, gender, age, about, photoUrl, isDummy:true, _id:user._id, isPremium}} />
         <fieldset className="fieldset w-xs bg-base-200 border border-base-300 p-4 rounded-box">
             <legend className="fieldset-legend">Edit Profile</legend>
             

@@ -5,7 +5,7 @@ import { toggleLoading } from "../utils/loaderSlice";
 
 const UserCard = ({user, fetchFeed}) => {
     const dispatch = useDispatch();
-    const {firstName, lastName, about, gender, age, skills, photoUrl, isDummy, _id:toUserId} = user || {};
+    const {firstName, lastName, about, gender, age, skills, photoUrl, isDummy, _id:toUserId, isPremium} = user || {};
     const allowedStatuses = ['interested', 'ignored'];
     const handleConnection = async (status) => {
         dispatch(toggleLoading(true));
@@ -28,7 +28,7 @@ const UserCard = ({user, fetchFeed}) => {
                 className="rounded-xl cursor-zoom-in h-full w-auto object-cover" onClick={() => document.getElementById(toUserId).showModal()} />
             </figure>
             <div className="card-body">
-                <h2 className="card-title">{firstName} {lastName}, {age}</h2>
+                <h2 className="card-title">{firstName} {lastName}, {age}{isPremium ? <img style={{width: '25px', background: '#683c00', borderRadius: '50%', padding: '3px'}} src='https://cdn-icons-png.flaticon.com/512/9967/9967681.png' /> : <></>}</h2>
                 <p>{about}</p>
                 {
                     !isDummy &&
