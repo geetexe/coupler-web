@@ -32,6 +32,7 @@ const Feed = () => {
     }
     
     useEffect(() => {
+        setIsLoading(false);
         !feed?.length && fetchFeed();
     }, []);
 
